@@ -1,7 +1,6 @@
 <script setup>
 import IndexCard from "@/components/IndexCard.vue";
-import { getAllPokemon } from "@/services/ApiService.vue";
-
+import { getAllPokemon } from "../services/ApiService.vue";
 getAllPokemon();
 </script>
 
