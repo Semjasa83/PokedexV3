@@ -7,8 +7,13 @@ import PokedexIndex from "@/components/PokedexIndex.vue";
 
 <template>
   <div class="home-wrapper">
-    <header-bar />
-    <pokedex-index />
+    <div class="header-wrapper">
+      <header-bar />
+    </div>
+    <div class="content-wrapper">
+      <pokedex-index />
+    </div>
+
   </div>
 
 <!--  <header>
@@ -30,5 +35,22 @@ import PokedexIndex from "@/components/PokedexIndex.vue";
     flex-direction: column;
     height: 100vh;
     width: 100%;
+    overflow: hidden;
+    background-color: hsl(0, 0%, 40%);
+  }
+
+  .header-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 6rem;
+  }
+
+  .content-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    overflow-y: auto;
   }
 </style>

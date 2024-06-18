@@ -20,6 +20,5 @@ console.log('pokeindex', allPokemon);
   align-items: center;
   padding: 1rem;
   width: 100%;
-  background-color: hsl(0, 0%, 40%);
 }
 </style>
