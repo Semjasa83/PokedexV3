@@ -1,20 +1,22 @@
-<script setup>
-
+<script>
+export default {
+  name: "CardIndex"
+}
 </script>
 
 <template>
   <div class="card-wrapper">
-    <section class="card-header">
-      <span>Name</span>
-      <span>ID</span>
-    </section>
-    <section class="card-pic">
-      <div class="pic-placeholder"></div>
-    </section>
-    <section class="card-type">
-      <span>Types:</span>
+  <section class="card-header">
+    <span>Name</span>
+    <span>ID</span>
+  </section>
+  <section class="card-pic">
+    <div class="pic-placeholder"></div>
+  </section>
+  <section class="card-type">
+    <span>Types:</span>
 
-    </section>
+  </section>
   </div>
 </template>
 

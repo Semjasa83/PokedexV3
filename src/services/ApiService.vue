@@ -1,13 +1,11 @@
 <script>
 import axios from 'axios';
 
-const allPokemon = [];
+export const allPokemon = [];
 
 export default {
   name: "ApiService"
 }
-
-
 
 async function getPokemonData(url) {
   const response = await axios.get(url);
@@ -23,7 +21,7 @@ export async function getAllPokemon() {
   allPokemon.value = pokemonData;
 }
 
-console.log(allPokemon);
+getAllPokemon();
 
 </script>
 

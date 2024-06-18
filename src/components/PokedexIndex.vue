@@ -1,12 +1,13 @@
 <script setup>
-import IndexCard from "@/components/IndexCard.vue";
-import { getAllPokemon } from "../services/ApiService.vue";
-getAllPokemon();
+import CardIndex from "@/components/utility/CardIndex.vue";
+import { allPokemon } from "@/services/ApiService.vue";
+
+console.log(allPokemon);
 </script>
 
 <template>
   <div class="index-wrapper">
-    <index-card />
+    <CardIndex />
   </div>
 </template>
 
