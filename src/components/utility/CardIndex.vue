@@ -1,4 +1,7 @@
 <script>
+import axios from "axios";
+import {onMounted, ref} from "vue";
+
 export default {
   name: "CardIndex",
   props: {
@@ -6,9 +9,22 @@ export default {
       type: Object,
       required: true
     }
+  },
+  setup(props) {
+    const pokemonImg = ref(null);
+    onMounted(async () => {
+      const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${props.pokemon.additionalData.id}`);
+      pokemonImg.value = response.data.sprites.front_default;
+    });
+    return {
+      pokemonImg
+    };
   }
 }
 
+// async function getPokemonImg(id) {
+//   const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
+// }
 
 </script>
 
@@ -19,7 +35,7 @@ export default {
       <span class="poke-id">#{{ pokemon.additionalData.id }}</span>
     </section>
     <section class="card-pic">
-      <img class="pokemon-img" :src="pokemon.img.config.url" alt="Pokemon Img">
+      <img class="pokemon-img" :src="pokemonImg" alt="Pokemon Img">
     </section>
   <section class="card-type">
     <span v-for="(types, index) in pokemon.additionalData.types" :key="index" :types="types" :class="types.type.name">
