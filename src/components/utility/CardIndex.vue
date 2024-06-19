@@ -13,7 +13,7 @@ export default {
 </script>
 
 <template>
-  <div class="card-wrapper">
+  <div class="card-wrapper" :class="pokemon.additionalData.types[0].type.name + '-border'">
     <section class="card-header">
       <span class="poke-name">{{ pokemon.additionalData.name }}</span>
       <span class="poke-id">#{{ pokemon.additionalData.id }}</span>
@@ -22,7 +22,9 @@ export default {
       <img class="pokemon-img" :src="pokemon.img.config.url" alt="Pokemon Img">
     </section>
   <section class="card-type">
-    <span v-for="(types, index) in pokemon.additionalData.types" :key="index" :types="types">{{ types.type.name }}</span>
+    <span v-for="(types, index) in pokemon.additionalData.types" :key="index" :types="types" :class="types.type.name">
+      {{ types.type.name }}
+    </span>
 
   </section>
   </div>
@@ -80,9 +82,11 @@ export default {
       align-items: center;
       padding: 0.5rem;
       margin: 0.5rem;
-      background-color: hsl(0, 0%, 30%);
       border-radius: 1rem;
       min-width: 4rem;
+      color: #282828;
+      font-weight: 700;
+      text-transform: capitalize;
     }
   }
 }
