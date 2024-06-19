@@ -8,23 +8,28 @@ export default {
   name: "ApiService"
 }
 
-async function getPokemonData(url) {
-  const response = await axios.get(url);
-  return response.data;
-}
-
 export async function getAllPokemon() {
   const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=100');
   const pokemonData = await Promise.all(response.data.results.map(async (pokemon) => {
     const additionalData = await getPokemonData(pokemon.url);
     return { ...pokemon, additionalData };
   }));
+  getPokemonIndexImg(pokemonData);
+}
+
+async function getPokemonData(url) {
+  const response = await axios.get(url);
+  return response.data;
+}
+
+async function getPokemonIndexImg(pokemonData) {
   const pokemonImg = await Promise.all(pokemonData.map(async (pokemon) => {
-    const img = await axios.get(pokemon.additionalData.sprites.other.dream_world.front_default);
+    const img = await axios.get(pokemon.additionalData.sprites.front_default);
     return { ...pokemon, img };
   }));
   allPokemon.value = pokemonImg;
 }
+
 
 getAllPokemon();
 

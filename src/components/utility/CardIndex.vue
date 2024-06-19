@@ -65,6 +65,7 @@ export default {
   .card-pic {
     width: 8rem;
     height: 8rem;
+    object-fit: contain;
     img {
       width: 100%;
       height: 100%;
