@@ -24,6 +24,7 @@ async function getPokemonData(url) {
   return response.data;
 }
 
+
 // export async function getAllPokemon() {
 //   ....
 //   getPokemonIndexImg(pokemonData);

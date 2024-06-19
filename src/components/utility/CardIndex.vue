@@ -22,6 +22,7 @@ export default {
   }
 }
 
+
 // async function getPokemonImg(id) {
 //   const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
 // }
