@@ -36,7 +36,7 @@ export default {
       <span class="poke-id">#{{ pokemon.additionalData.id }}</span>
     </section>
     <section class="card-pic">
-      <img class="pokemon-img" :src="pokemonImg" alt="Pokemon Img">
+      <img class="pokemon-img" :src="pokemonImg" alt="Pokemon Img" loading="lazy">
     </section>
   <section class="card-type">
     <span v-for="(types, index) in pokemon.additionalData.types" :key="index" :types="types" :class="types.type.name">

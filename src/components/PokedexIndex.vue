@@ -6,11 +6,11 @@ console.log('pokeindex', allPokemon);
 
 </script>
 
-<template>
-  <div class="index-wrapper">
-    <CardIndex v-for="(pokemon, index) in allPokemon.value" :key="index" :pokemon="pokemon" />
-  </div>
-</template>
+<!--<template>-->
+<!--  <div class="index-wrapper">-->
+<!--    <CardIndex v-for="(pokemon, index) in allPokemon.value" :key="index" :pokemon="pokemon" />-->
+<!--  </div>-->
+<!--</template>-->
 
 <style scoped>
 .index-wrapper {
