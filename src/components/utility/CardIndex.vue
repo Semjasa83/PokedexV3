@@ -1,4 +1,7 @@
 <script>
+import axios from "axios";
+import {onMounted, ref} from "vue";
+
 export default {
   name: "CardIndex",
   props: {
@@ -6,26 +9,34 @@ export default {
       type: Object,
       required: true
     }
+  },
+  setup(props) {
+    const pokemonImg = ref(null);
+    onMounted(async () => {
+      const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${props.pokemon.additionalData.id}`);
+      pokemonImg.value = response.data.sprites.front_default;
+    });
+    return {
+      pokemonImg
+    };
   }
 }
-
 
 </script>
 
 <template>
   <div class="card-wrapper" :class="pokemon.additionalData.types[0].type.name + '-border'">
     <section class="card-header">
-      <span class="poke-name">{{ pokemon.additionalData.name }}</span>
+      <span class="poke-name">{{ pokemon.name }}</span>
       <span class="poke-id">#{{ pokemon.additionalData.id }}</span>
     </section>
     <section class="card-pic">
-      <img class="pokemon-img" :src="pokemon.img.config.url" alt="Pokemon Img">
+      <img class="pokemon-img" :src="pokemonImg" alt="Pokemon Img" loading="lazy">
     </section>
   <section class="card-type">
     <span v-for="(types, index) in pokemon.additionalData.types" :key="index" :types="types" :class="types.type.name">
       {{ types.type.name }}
     </span>
-
   </section>
   </div>
 </template>
@@ -65,6 +76,7 @@ export default {
   .card-pic {
     width: 8rem;
     height: 8rem;
+    object-fit: contain;
     img {
       width: 100%;
       height: 100%;
