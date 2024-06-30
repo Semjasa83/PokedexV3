@@ -22,17 +22,12 @@ export default {
   }
 }
 
-
-// async function getPokemonImg(id) {
-//   const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
-// }
-
 </script>
 
 <template>
   <div class="card-wrapper" :class="pokemon.additionalData.types[0].type.name + '-border'">
     <section class="card-header">
-      <span class="poke-name">{{ pokemon.additionalData.name }}</span>
+      <span class="poke-name">{{ pokemon.name }}</span>
       <span class="poke-id">#{{ pokemon.additionalData.id }}</span>
     </section>
     <section class="card-pic">
@@ -42,7 +37,6 @@ export default {
     <span v-for="(types, index) in pokemon.additionalData.types" :key="index" :types="types" :class="types.type.name">
       {{ types.type.name }}
     </span>
-
   </section>
   </div>
 </template>

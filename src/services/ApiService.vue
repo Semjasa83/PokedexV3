@@ -3,9 +3,9 @@ import axios from 'axios';
 import {reactive} from "vue";
 
 export const allPokemon = reactive([]);
-export const allPokemonWithData = reactive([]);
+export const allPokemonData = reactive([]);
 let offset = 0;
-let limit = 1302;
+let limit = 1024;
 
 export default {
   name: "ApiService"
@@ -22,7 +22,7 @@ export async function addAdditionalData() {
     return {...pokemon, additionalData};
   }));
   // return allPokemonWithAdditionalData;
-  allPokemonWithData.push(allPokemonWithAdditionalData);
+  allPokemonData.push(allPokemonWithAdditionalData);
 }
 
 async function getPokemonData(url) {
@@ -41,6 +41,5 @@ async function fetchData() {
 }
 
 fetchData();
-console.log(allPokemonWithData) //LOG DELETE LATER
 </script>
 
