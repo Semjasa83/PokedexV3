@@ -25,7 +25,7 @@ export default {
 </script>
 
 <template>
-  <div class="card-wrapper" :class="pokemon.additionalData.types[0].type.name + '-border'">
+  <div class="card-wrapper" :class="pokemon.additionalData.types[0].type.name + '-border'" @click="$emit('open-pokemon', pokemon.additionalData.id)">
     <section class="card-header">
       <span class="poke-name">{{ pokemon.name }}</span>
       <span class="poke-id">#{{ pokemon.additionalData.id }}</span>
@@ -34,7 +34,7 @@ export default {
       <img class="pokemon-img" :src="pokemonImg" alt="Pokemon Img" loading="lazy">
     </section>
   <section class="card-type">
-    <span v-for="(types, index) in pokemon.additionalData.types" :key="index" :types="types" :class="types.type.name">
+    <span v-for="(types, index) in pokemon.additionalData.types" :key="index" :class="types.type.name">
       {{ types.type.name }}
     </span>
   </section>
@@ -55,6 +55,9 @@ export default {
   margin: 1rem;
   position: relative;
   border: 2px solid hsl(0, 0%, 100%);
+  &:hover{
+    cursor: pointer;
+  }
   .card-header {
     display: flex;
     flex-direction: row;

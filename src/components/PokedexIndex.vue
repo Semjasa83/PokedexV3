@@ -2,11 +2,13 @@
 import { ref, onMounted } from 'vue';
 import CardIndex from "@/components/utility/CardIndex.vue";
 import { allPokemonData } from "@/services/ApiService.vue";
+import CardDetail from "@/components/utility/CardDetail.vue";
 
 console.log('pokeindex', allPokemonData);
 
 let itemsToDisplay = ref(10);
 const itemsPerLoad = 10;
+let openDetail = ref(false);
 
 onMounted(() => {
   window.addEventListener('scroll', () => {
@@ -15,15 +17,26 @@ onMounted(() => {
     }
   });
 });
+
+const openPokemon = (id) => {
+  console.log('Pokemon ID:', id);
+  openDetail.value = true;
+  console.log(openDetail.value)
+  // Hier können Sie den Code hinzufügen, um die Pokemon Details zu öffnen
+};
+
 </script>
 
 <template>
   <div id="pokemonIndexArea" class="index-wrapper">
-    <CardIndex v-for="(pokemon, index) in (allPokemonData[0] ? allPokemonData[0].slice(0, itemsToDisplay.value) : [])" :key="index" :pokemon="pokemon" />
+    <card-index v-for="(pokemon, index) in (allPokemonData[0] ? allPokemonData[0].slice(0, itemsToDisplay.value) : [])" :key="index" :pokemon="pokemon"  @open-pokemon="openPokemon" />
+    <card-detail :open="openDetail.value" class="detail-wrapper"></card-detail>
   </div>
+
+
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .index-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -31,5 +44,14 @@ onMounted(() => {
   align-items: center;
   padding: 1rem;
   width: 100%;
+  height: 100%;
+  .detail-wrapper{
+    display: flex;
+    width: 100%;
+    height: calc(100% - 6rem);
+    z-index: 100;
+  }
 }
+
+
 </style>
