@@ -30,7 +30,7 @@ const openPokemon = (id) => {
 <template>
   <div id="pokemonIndexArea" class="index-wrapper">
     <card-index v-for="(pokemon, index) in (allPokemonData[0] ? allPokemonData[0].slice(0, itemsToDisplay.value) : [])" :key="index" :pokemon="pokemon"  @open-pokemon="openPokemon" />
-    <card-detail :open="openDetail.value" class="detail-wrapper"></card-detail>
+    <card-detail :visible="openDetail.value" class="detail-wrapper"></card-detail>
   </div>
 
 
@@ -45,10 +45,16 @@ const openPokemon = (id) => {
   padding: 1rem;
   width: 100%;
   height: 100%;
+  position: relative;
   .detail-wrapper{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
     display: flex;
     width: 100%;
-    height: calc(100% - 6rem);
+    height: 100%;
     z-index: 100;
   }
 }
