@@ -16,7 +16,7 @@ export default {}
   display: flex;
   justify-content: center;
   align-items: center;
-  height: fit-content;
+  height: 6rem;
   padding: 1rem;
   width: 100%;
   background-color: hsl(0, 0%, 20%);

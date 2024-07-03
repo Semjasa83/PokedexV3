@@ -39,4 +39,26 @@ import PokedexIndex from "@/components/PokedexIndex.vue";
     width: 100%;
     overflow-y: auto;
   }
+
+  /* Scroll bar stylings */
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: hsl(0, 0%, 20%);
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background:  hsl(0, 0%, 30%);
+    border-radius: 5px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(0, 0%, 40%);
+  }
 </style>
