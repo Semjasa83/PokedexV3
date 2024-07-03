@@ -20,17 +20,13 @@ onMounted(() => {
 });
 
 const openPokemon = (pokemon) => {
-  console.log('Pokemon ID:', pokemon);
   selectedPokemon.value = pokemon;
   openDetail.value = true;
-  console.log(openDetail.value)
-  // Hier können Sie den Code hinzufügen, um die Pokemon Details zu öffnen
 };
 
 const closeDetail = () => {
   openDetail.value = false;
   selectedPokemon.value = null;
-  console.log('Closing detail, openDetail is now:', openDetail.value);
 };
 
 </script>

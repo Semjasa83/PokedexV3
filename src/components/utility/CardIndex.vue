@@ -48,7 +48,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  min-width: 14rem;
+  min-width: 15rem;
   min-height: 18rem;
   background-color: hsl(0, 0%, 20%);
   border-radius: 1rem;
@@ -60,9 +60,7 @@ export default {
   }
   .card-header {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
     height: 100%;
     width: 100%;
     .poke-name {
@@ -70,11 +68,7 @@ export default {
       font-weight: 700;
       font-size: 1.2rem;
     }
-    .poke-id {
-      //position: absolute;
-      top: 0.5rem;
-      right: 1rem;
-    }
+
   }
   .card-pic {
     width: 8rem;
@@ -98,7 +92,7 @@ export default {
       padding: 0.5rem;
       margin: 0.5rem;
       border-radius: 1rem;
-      min-width: 4rem;
+      min-width: 5rem;
       color: #282828;
       font-weight: 700;
       text-transform: capitalize;
