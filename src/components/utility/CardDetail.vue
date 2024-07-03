@@ -1,31 +1,37 @@
-<script>
+<script setup>
 
-import {toRefs, watch} from "vue";
+import { watch } from 'vue';
 
-export default {
-  name: "CardDetail",
-  props: {
-    visible: {
-      type: Boolean,
-      default: false
-    },
-    pokemon: Object
+const props = defineProps({
+  visible: {
+    type: Boolean,
+    default: false
   },
-  setup(props) {
-    const { visible} = toRefs(props);
-
-    watch(visible, (newValue, oldValue) => {
-      console.log('open prop changed from', oldValue, 'to', newValue);
-    });
+  pokemon: {
+    type: Object,
+    default: () => ({})
   }
-}
+});
+
+const emit = defineEmits(['close']);
+
+watch(() => props.visible, (newValue) => {
+  console.log('Dialog visibility changed to:', newValue);
+});
+
+const closeDialog = () => {
+  console.log('Closing dialog');
+  emit('close');
+};
 </script>
 
 <template>
   <div v-if="visible" class="dialog">
-      <div class="card-wrapper">
-
-      </div>
+    <div class="card-wrapper">
+      <h2>{{ pokemon?.name || 'No Pokemon selected' }}</h2>
+      <!-- Fügen Sie hier weitere Details des Pokémon hinzu -->
+      <button @click="closeDialog">Schließen</button>
+    </div>
   </div>
 </template>
 

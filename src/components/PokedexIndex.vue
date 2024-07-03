@@ -9,6 +9,7 @@ console.log('pokeindex', allPokemonData);
 let itemsToDisplay = ref(10);
 const itemsPerLoad = 10;
 let openDetail = ref(false);
+const selectedPokemon = ref(null);
 
 onMounted(() => {
   window.addEventListener('scroll', () => {
@@ -18,19 +19,26 @@ onMounted(() => {
   });
 });
 
-const openPokemon = (id) => {
-  console.log('Pokemon ID:', id);
+const openPokemon = (pokemon) => {
+  console.log('Pokemon ID:', pokemon);
+  selectedPokemon.value = pokemon;
   openDetail.value = true;
   console.log(openDetail.value)
   // Hier können Sie den Code hinzufügen, um die Pokemon Details zu öffnen
+};
+
+const closeDetail = () => {
+  openDetail.value = false;
+  selectedPokemon.value = null;
+  console.log('Closing detail, openDetail is now:', openDetail.value);
 };
 
 </script>
 
 <template>
   <div id="pokemonIndexArea" class="index-wrapper">
-    <card-index v-for="(pokemon, index) in (allPokemonData[0] ? allPokemonData[0].slice(0, itemsToDisplay.value) : [])" :key="index" :pokemon="pokemon"  @open-pokemon="openPokemon" />
-    <card-detail :visible="openDetail.value" class="detail-wrapper"></card-detail>
+    <card-index v-for="(pokemon, index) in (allPokemonData[0] ? allPokemonData[0].slice(0, itemsToDisplay.value) : [])" :key="index" :pokemon="pokemon"  @open-pokemon="openPokemon(pokemon)" />
+    <card-detail :visible="openDetail" :pokemon="selectedPokemon" class="detail-wrapper" @close="closeDetail"></card-detail>
   </div>
 
 
