@@ -1,6 +1,8 @@
 <script setup>
-
-import {watch} from 'vue';
+import {ref, watch} from 'vue';
+import AboutStats from './AboutStats.vue';
+import BaseStats from './BaseStats.vue';
+import MovesStats from './MovesStats.vue';
 
 const props = defineProps({
   visible: {
@@ -25,6 +27,8 @@ const closeDialog = () => {
 const noCloseDialog = () => {
 };
 
+const currentSection = ref('aboutStats'); // Mögliche Werte: 'about', 'baseStats', 'moves'
+
 </script>
 
 <template>
@@ -46,11 +50,15 @@ const noCloseDialog = () => {
 
       </section>
       <section class="center-section">
-
+        <a @click="currentSection = 'aboutStats'">About</a>
+        <a @click="currentSection = 'baseStats'">Base Stats</a>
+        <a @click="currentSection = 'movesStats'">Moves</a>
       </section>
-      <section class="lower-section">
-
-      </section>
+      <div class="lower-section">
+        <AboutStats v-if="currentSection === 'aboutStats'" />
+        <BaseStats v-if="currentSection === 'baseStats'" />
+        <MovesStats v-if="currentSection === 'movesStats'" />
+      </div>
     </div>
   </div>
 </template>
@@ -144,12 +152,17 @@ const noCloseDialog = () => {
 
 .center-section {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2rem;
   align-items: center;
   height: 10%;
   background-color: hsl(0, 0%, 40%);
   border-radius: 1rem 1rem 0 0;
+  a {
+    text-align: center;
+    width: 100%;
+  }
 }
 
 .lower-section {
