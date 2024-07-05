@@ -51,7 +51,7 @@ const closeDetail = () => {
   height: 100%;
   position: relative;
   .detail-wrapper{
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     right: 0;

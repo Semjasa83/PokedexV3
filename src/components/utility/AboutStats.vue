@@ -1,11 +1,12 @@
-<script>
-export default {
-  name: "AboutStats",
-}
+<script setup>
+defineProps({
+  pokemon: Object
+});
+
 </script>
 
 <template>
-  ABOUT
+<div></div>
 </template>
 
 <style scoped lang="scss">

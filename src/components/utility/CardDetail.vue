@@ -55,9 +55,9 @@ const currentSection = ref('aboutStats'); // Mögliche Werte: 'about', 'baseStat
         <a @click="currentSection = 'movesStats'">Moves</a>
       </section>
       <div class="lower-section">
-        <AboutStats v-if="currentSection === 'aboutStats'" />
+        <AboutStats v-if="currentSection === 'aboutStats'" :pokemon="pokemon"/>
         <BaseStats v-if="currentSection === 'baseStats'" />
-        <MovesStats v-if="currentSection === 'movesStats'" />
+        <MovesStats v-if="currentSection === 'movesStats'" :pokemon="pokemon"/>
       </div>
     </div>
   </div>
@@ -146,7 +146,7 @@ const currentSection = ref('aboutStats'); // Mögliche Werte: 'about', 'baseStat
     position: absolute;
     height: 60%;
     padding: 0.5rem;
-    bottom: -1rem;
+    bottom: 0rem;
   }
 }
 
@@ -156,7 +156,7 @@ const currentSection = ref('aboutStats'); // Mögliche Werte: 'about', 'baseStat
   justify-content: center;
   gap: 2rem;
   align-items: center;
-  height: 10%;
+  height: 5%;
   background-color: hsl(0, 0%, 40%);
   border-radius: 1rem 1rem 0 0;
   a {
@@ -167,13 +167,17 @@ const currentSection = ref('aboutStats'); // Mögliche Werte: 'about', 'baseStat
 
 .lower-section {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  height: 45%;
+  height: 50%;
   border: 1px solid hsl(0, 0%, 50%);
   background-color: hsl(0, 0%, 40%);
   border-radius: 0 0 1rem 1rem;
+  overflow-y: auto;
+  gap: 1rem;
+  padding: 0.5rem;
 }
 
 
