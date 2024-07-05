@@ -29,18 +29,21 @@ const noCloseDialog = () => {
 
 <template>
   <div v-if="visible" class="dialog" @click="closeDialog">
-    <div class="card-wrapper" @click.stop="noCloseDialog"
-         :class="pokemon.additionalData.types[0].type.name + '-border'">
-      <img src="../../assets/icons/close.svg" alt="icon" class="close-icon">
-      <span class="poke-name">{{ pokemon?.name || 'No Pokemon selected' }}</span>
+    <div :class="pokemon.additionalData.types[0].type.name + '-border'" class="card-wrapper"
+         @click.stop="noCloseDialog">
       <section class="upper-section">
+        <img alt="icon" class="close-icon" src="../../assets/icons/close.svg" @click="closeDialog">
+        <span class="poke-name">{{ pokemon?.name || 'No Pokemon selected' }}</span>
         <div class="card-type">
           <span v-for="(types, index) in pokemon.additionalData.types" :key="index" :class="types.type.name">
           {{ types.type.name }}
-        </span>
+          </span>
         </div>
-        <img class="pokemon-img" :src="pokemon.additionalData.sprites.other.dream_world.front_default" alt="Pokemon Img"
+        <img :src="pokemon.additionalData.sprites.other.dream_world.front_default" alt="Pokemon Img"
+             class="pokemon-img"
              loading="lazy">
+        <span class="pokemon-id">#{{pokemon.additionalData.id}}</span>
+
       </section>
       <section class="center-section">
 
@@ -48,13 +51,11 @@ const noCloseDialog = () => {
       <section class="lower-section">
 
       </section>
-
-
     </div>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .dialog {
   display: flex;
   justify-content: center;
@@ -72,10 +73,9 @@ const noCloseDialog = () => {
   height: 35rem;
   width: 25rem;
   background-color: hsl(0, 0%, 20%);
-  padding: 1rem;
-  position: relative;
 
   .poke-name {
+    margin-top: 1rem;
     font-size: 1.5rem;
     font-weight: 600;
     text-transform: capitalize;
@@ -91,22 +91,29 @@ const noCloseDialog = () => {
 }
 
 .upper-section {
-  margin-top: 0.5rem;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 45%;
-  border: 1px solid hsl(0, 0%, 50%);
-  background-color: hsl(0, 0%, 40%);
+  height: 55%;
+  background-color: hsl(0, 0%, 20%);
   border-radius: 1rem 1rem 0 0;
+  position: relative;
+
+  .upper-section-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 
   .card-type {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 100%;
+
     span {
       display: flex;
       justify-content: center;
@@ -121,9 +128,17 @@ const noCloseDialog = () => {
     }
   }
 
+  .pokemon-id{
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+  }
+
   .pokemon-img {
-    width: 60%;
+    position: absolute;
+    height: 60%;
     padding: 0.5rem;
+    bottom: -1rem;
   }
 }
 
@@ -133,7 +148,8 @@ const noCloseDialog = () => {
   justify-content: space-between;
   align-items: center;
   height: 10%;
-  background-color: hsl(0, 0%, 20%);
+  background-color: hsl(0, 0%, 40%);
+  border-radius: 1rem 1rem 0 0;
 }
 
 .lower-section {
@@ -146,7 +162,6 @@ const noCloseDialog = () => {
   background-color: hsl(0, 0%, 40%);
   border-radius: 0 0 1rem 1rem;
 }
-
 
 
 </style>
