@@ -14,7 +14,7 @@ export default {
     const pokemonImg = ref(null);
     onMounted(async () => {
       const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${props.pokemon.additionalData.id}`);
-      pokemonImg.value = response.data.sprites.front_default;
+      pokemonImg.value = response.data.sprites.front_shiny;
     });
     return {
       pokemonImg

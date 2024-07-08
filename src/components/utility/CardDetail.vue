@@ -50,9 +50,9 @@ const currentSection = ref('aboutStats'); // Mögliche Werte: 'about', 'baseStat
 
       </section>
       <section class="center-section">
-        <a @click="currentSection = 'aboutStats'">About</a>
-        <a @click="currentSection = 'baseStats'">Base Stats</a>
-        <a @click="currentSection = 'movesStats'">Moves</a>
+        <a @click="currentSection = 'aboutStats'" :class="{ active: currentSection === 'aboutStats' }">About</a>
+        <a @click="currentSection = 'baseStats'" :class="{ active: currentSection === 'baseStats' }">Base Stats</a>
+        <a @click="currentSection = 'movesStats'" :class="{ active: currentSection === 'movesStats' }">Moves</a>
       </section>
       <div class="lower-section">
         <AboutStats v-if="currentSection === 'aboutStats'" :pokemon="pokemon"/>
@@ -95,6 +95,7 @@ const currentSection = ref('aboutStats'); // Mögliche Werte: 'about', 'baseStat
     right: 1rem;
     height: 1.5rem;
     width: 1.5rem;
+    cursor: pointer;
   }
 }
 
@@ -146,7 +147,7 @@ const currentSection = ref('aboutStats'); // Mögliche Werte: 'about', 'baseStat
     position: absolute;
     height: 60%;
     padding: 0.5rem;
-    bottom: 0rem;
+    bottom: 0;
   }
 }
 
@@ -156,12 +157,17 @@ const currentSection = ref('aboutStats'); // Mögliche Werte: 'about', 'baseStat
   justify-content: center;
   gap: 2rem;
   align-items: center;
-  height: 5%;
+  height: 7%;
   background-color: hsl(0, 0%, 40%);
   border-radius: 1rem 1rem 0 0;
   a {
     text-align: center;
+    font-weight: 700;
     width: 100%;
+    cursor: pointer;
+    &:hover {
+      color: hsl(0, 0%, 20%);
+    }
   }
 }
 
@@ -169,16 +175,19 @@ const currentSection = ref('aboutStats'); // Mögliche Werte: 'about', 'baseStat
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   height: 50%;
-  border: 1px solid hsl(0, 0%, 50%);
+  border-top: 2px solid hsl(0, 0%, 50%);
   background-color: hsl(0, 0%, 40%);
   border-radius: 0 0 1rem 1rem;
   overflow-y: auto;
-  gap: 1rem;
+  gap: 2rem;
   padding: 0.5rem;
 }
 
+.active {
+  color: hsl(0, 0%, 20%)
+}
 
 </style>
