@@ -56,7 +56,7 @@ const currentSection = ref('aboutStats'); // Mögliche Werte: 'about', 'baseStat
       </section>
       <div class="lower-section">
         <AboutStats v-if="currentSection === 'aboutStats'" :pokemon="pokemon"/>
-        <BaseStats v-if="currentSection === 'baseStats'" />
+        <BaseStats v-if="currentSection === 'baseStats'" :pokemon="pokemon"/>
         <MovesStats v-if="currentSection === 'movesStats'" :pokemon="pokemon"/>
       </div>
     </div>

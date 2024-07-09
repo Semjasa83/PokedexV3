@@ -1,19 +1,7 @@
 <script setup>
-import {watch, ref} from 'vue';
-import axios from 'axios';
-
 const props = defineProps({
   pokemon: Object
 });
-
-// let speciesData = ref({});
-// watch(() => props.pokemon, async (newVal) => {
-//   if (newVal && newVal.additionalData) {
-//     const id = newVal.additionalData.id;
-//     const fetchSpecies = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${id}/`)
-//     speciesData.value = fetchSpecies.data.egg_groups;
-//   }
-// }, { immediate: true });
 
 </script>
 
