@@ -160,13 +160,17 @@ const currentSection = ref('aboutStats'); // Mögliche Werte: 'about', 'baseStat
   height: 7%;
   background-color: hsl(0, 0%, 40%);
   border-radius: 1rem 1rem 0 0;
+  border-bottom: 0.5px solid hsl(0, 0%, 50%);
   a {
     text-align: center;
     font-weight: 700;
     width: 100%;
     cursor: pointer;
+    border-bottom: 2px solid hsl(0, 0%, 40%);
+    padding: 0.25rem 0;
     &:hover {
       color: hsl(0, 0%, 20%);
+      border-bottom: 2px solid hsl(0, 0%, 70%);
     }
   }
 }
@@ -176,18 +180,17 @@ const currentSection = ref('aboutStats'); // Mögliche Werte: 'about', 'baseStat
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: start;
-  align-items: center;
   height: 50%;
-  border-top: 2px solid hsl(0, 0%, 50%);
   background-color: hsl(0, 0%, 40%);
   border-radius: 0 0 1rem 1rem;
   overflow-y: auto;
-  gap: 2rem;
+  gap: 1rem;
   padding: 0.5rem;
 }
 
 .active {
-  color: hsl(0, 0%, 20%)
+  color: hsl(0, 0%, 20%);
+  border-bottom: 2px solid hsl(0, 0%, 20%) !important;
 }
 
 </style>
