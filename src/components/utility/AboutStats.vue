@@ -1,7 +1,8 @@
 <script setup>
-const props = defineProps({
+defineProps({
   pokemon: Object
 });
+
 
 </script>
 

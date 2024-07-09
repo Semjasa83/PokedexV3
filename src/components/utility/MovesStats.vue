@@ -15,6 +15,6 @@ defineProps({
   .move {
     padding: 0.25rem 0.5rem;
     border-radius: 1rem;
-    background-color: hsl(0, 0%, 20%);
+    background-color: hsl(0, 1%, 20%);
   }
 </style>
