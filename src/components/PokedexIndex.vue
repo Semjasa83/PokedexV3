@@ -36,8 +36,6 @@ const closeDetail = () => {
     <card-index v-for="(pokemon, index) in (allPokemonData[0] ? allPokemonData[0].slice(0, itemsToDisplay.value) : [])" :key="index" :pokemon="pokemon"  @open-pokemon="openPokemon(pokemon)" />
     <card-detail :visible="openDetail" :pokemon="selectedPokemon" class="detail-wrapper" @close="closeDetail"></card-detail>
   </div>
-
-
 </template>
 
 <style scoped lang="scss">

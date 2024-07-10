@@ -1,15 +1,17 @@
-<template>
+<script setup>
+function filterPokemon(event) {
+  console.log(event.target.value);
+}
+</script>
 
+<template>
   <div class="header-wrapper">
     <span class="header-headline">Pokedex</span>
+    <input type="text" @keyup="filterPokemon">
   </div>
-
 
 </template>
 
-<script>
-export default {}
-</script>
 
 <style lang="scss">
 .header-wrapper {
