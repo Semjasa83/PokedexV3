@@ -44,6 +44,7 @@ import PokedexIndex from "@/components/PokedexIndex.vue";
   ::-webkit-scrollbar {
     width: 12px;
     height: 10px;
+    border-radius: 0 0 1rem 0;
   }
 
   /* Track */
