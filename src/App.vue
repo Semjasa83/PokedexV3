@@ -1,6 +1,17 @@
 <script setup>
+import {provide, ref} from 'vue';
 import HeaderBar from './components/HeaderBar.vue'
 import PokedexIndex from "@/components/PokedexIndex.vue";
+
+const filterValue = ref('');
+const handleFilter = ref((value) => {
+  if (value !== undefined) {
+    filterValue.value = value;
+  }
+});
+
+provide('filterValue', filterValue);
+provide('handleFilter', handleFilter);
 </script>
 
 <template>
