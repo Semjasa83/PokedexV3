@@ -158,7 +158,7 @@ const currentSection = ref('aboutStats'); // Mögliche Werte: 'about', 'baseStat
   gap: 2rem;
   align-items: center;
   height: 7%;
-  background-color: hsl(0, 0%, 40%);
+  background-color: hsl(0, 0%, 50%);
   border-radius: 1rem 1rem 0 0;
   border-bottom: 0.5px solid hsl(0, 0%, 50%);
   a {
@@ -166,11 +166,11 @@ const currentSection = ref('aboutStats'); // Mögliche Werte: 'about', 'baseStat
     font-weight: 700;
     width: 100%;
     cursor: pointer;
-    border-bottom: 2px solid hsl(0, 0%, 40%);
+    border-bottom: 3px solid hsl(0, 0%, 50%);
     padding: 0.25rem 0;
     &:hover {
       color: hsl(0, 0%, 20%);
-      border-bottom: 2px solid hsl(0, 0%, 70%);
+      border-bottom: 3px solid hsl(0, 0%, 70%);
     }
   }
 }
@@ -181,16 +181,17 @@ const currentSection = ref('aboutStats'); // Mögliche Werte: 'about', 'baseStat
   flex-wrap: wrap;
   justify-content: start;
   height: 50%;
-  background-color: hsl(0, 0%, 40%);
+  background-color: hsl(0, 0%, 100%);
   border-radius: 0 0 1rem 1rem;
   overflow-y: auto;
   gap: 1rem;
   padding: 0.5rem;
+  color: hsl(0, 0%, 20%);
 }
 
 .active {
   color: hsl(0, 0%, 20%);
-  border-bottom: 2px solid hsl(0, 0%, 20%) !important;
+  border-bottom: 3px solid hsl(0, 0%, 20%) !important;
 }
 
 </style>
