@@ -17,18 +17,13 @@ const props = defineProps({
 
 const emit = defineEmits(['close']);
 
-watch(() => props.visible, () => {
-});
+watch(() => props.visible, () => {});
 
-const closeDialog = () => {
-  emit('close');
-};
+const closeDialog = () => {emit('close');};
 
-const noCloseDialog = () => {
-};
+const noCloseDialog = () => {};
 
 const currentSection = ref('aboutStats'); // Mögliche Werte: 'about', 'baseStats', 'moves'
-
 </script>
 
 <template>
@@ -43,7 +38,7 @@ const currentSection = ref('aboutStats'); // Mögliche Werte: 'about', 'baseStat
           {{ types.type.name }}
           </span>
         </div>
-        <img :src="pokemon.additionalData.sprites.other.dream_world.front_default" alt="Pokemon Img"
+        <img :src="pokemon.additionalData.sprites.front_shiny" alt="Pokemon Img"
              class="pokemon-img"
              loading="lazy">
         <span class="pokemon-id">#{{pokemon.additionalData.id}}</span>

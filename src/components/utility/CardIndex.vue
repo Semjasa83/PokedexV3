@@ -1,6 +1,6 @@
 <script>
 import axios from "axios";
-import {onMounted, ref} from "vue";
+import {onMounted, ref, watch} from "vue";
 
 export default {
   name: "CardIndex",
@@ -12,15 +12,21 @@ export default {
   },
   setup(props) {
     const pokemonImg = ref(null);
-    onMounted(async () => {
+    // Function to fetch Pokemon image
+    const fetchPokemonImage = async () => {
       const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${props.pokemon.additionalData.id}`);
       pokemonImg.value = response.data.sprites.front_shiny;
-    });
+    };
+    // Fetch image on component mount
+    onMounted(fetchPokemonImage);
+    // Re-fetch image when pokemon ID changes
+    watch(() => props.pokemon.additionalData.id, fetchPokemonImage);
     return {
       pokemonImg
     };
   }
 }
+
 
 </script>
 

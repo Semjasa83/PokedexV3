@@ -93,6 +93,7 @@ const closeDetail = () => {
 
 .filter-wrapper {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   width: 100%;
   height: 100%;
