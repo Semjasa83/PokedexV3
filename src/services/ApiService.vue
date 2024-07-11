@@ -21,7 +21,6 @@ export async function addAdditionalData() {
     const additionalData = await getPokemonData(pokemon.url);
     return {...pokemon, additionalData};
   }));
-  // return allPokemonWithAdditionalData;
   allPokemonData.push(allPokemonWithAdditionalData);
 }
 

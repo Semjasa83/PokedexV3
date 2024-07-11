@@ -54,7 +54,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  min-width: 15rem;
+  width: 15rem;
   min-height: 18rem;
   background-color: hsl(0, 0%, 20%);
   border-radius: 1rem;
@@ -70,6 +70,8 @@ export default {
     height: 100%;
     width: 100%;
     .poke-name {
+      display: inline-block;
+      word-break: break-word;
       text-transform: capitalize;
       font-weight: 700;
       font-size: 1.2rem;
