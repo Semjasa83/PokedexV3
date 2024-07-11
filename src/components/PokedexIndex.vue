@@ -3,20 +3,21 @@ import {ref, onMounted, watch, inject, onUnmounted, nextTick} from 'vue';
 import CardIndex from "@/components/utility/CardIndex.vue";
 import {allPokemonData} from "@/services/ApiService.vue";
 import CardDetail from "@/components/utility/CardDetail.vue";
+import {showLoading} from "@/services/ApiService.vue";
 
 console.log('showApi for interested People', allPokemonData);
 
 const filterValue = inject('filterValue');
 const selectedPokemon = ref(null);
 const filteredPokemon = ref([]);
-const filterState = ref('initial');
+const filterState = ref('');
 const openDetail = ref(false);
 const itemsPerLoad = 15;
 let itemsToDisplay = ref(100);
 
 
 const handleScroll = (event) => {
-  const { scrollTop, scrollHeight, clientHeight } = event.target;
+  const {scrollTop, scrollHeight, clientHeight} = event.target;
   if (scrollTop + clientHeight >= scrollHeight - 5) {
     // check if max Pokemon is reached
     if (itemsToDisplay.value < allPokemonData[0].length) {
@@ -44,18 +45,17 @@ watch(filterValue, (newValue) => {
     filterState.value = 'all';
   } else {
     filterState.value = 'filtered';
-  };
+  }
+  ;
   switch (filterState.value) {
-    case 'initial':
-      filteredPokemon.value = allPokemonData[0];
-      break;
     case 'filtered':
       filteredPokemon.value = allPokemonData[0].filter(pokemon => pokemon.name.toLowerCase().includes(newValue.toLowerCase()));
       break;
     case 'all':
       filteredPokemon.value = allPokemonData[0];
       break;
-  };
+  }
+  ;
 });
 
 const openPokemon = (pokemon) => {
@@ -81,9 +81,10 @@ const closeDetail = () => {
       <card-index v-for="(pokemon, index) in filteredPokemon.slice(0, itemsToDisplay)" :key="index"
                   :pokemon="pokemon" @open-pokemon="openPokemon(pokemon)"/>
     </div>
-    <!--    <div class="detail-wrapper loading">-->
-    <!--      TEST-->
-    <!--    </div>-->
+    <div class="detail-wrapper loading" v-if="showLoading">
+      <span class="loading-headline">Pokedex</span>
+      <span class="loader"></span>
+    </div>
 
     <card-detail :pokemon="selectedPokemon" :visible="openDetail" class="detail-wrapper"
                  @close="closeDetail"></card-detail>
@@ -125,11 +126,54 @@ const closeDetail = () => {
 
   .loading {
     z-index: 200;
-    background-color: cadetblue;
+    background-color: hsl(0, 0%, 20%);
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
+}
+
+.loader {
+  z-index: 350;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  position: relative;
+  animation: rotate 1s linear infinite
+}
+.loader::before , .loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0px;
+  border-radius: 50%;
+  border: 5px solid #FFF;
+  animation: prixClipFix 2s linear infinite ;
+}
+.loader::after{
+  inset: 8px;
+  transform: rotate3d(90, 90, 0, 180deg );
+  border-color: #FF3D00;
+}
+
+@keyframes rotate {
+  0%   {transform: rotate(0deg)}
+  100%   {transform: rotate(360deg)}
+}
+
+@keyframes prixClipFix {
+  0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+  50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+  75%, 100%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+}
+
+.loading-headline {
+  font-size: 4rem;
+  font-weight: 600;
+  width: fit-content;
+  color: #FFFFFF;
+  background: hsl(0, 0%, 20%);
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #FBA54C, 0 0 20px #FBA54C, 0 0 30px #FBA54C, 0 0 40px #FBA54C, 0 0 55px #FBA54C, 0 0 75px #FBA54C;
 }
 
 </style>

@@ -1,9 +1,10 @@
 <script>
 import axios from 'axios';
-import {reactive} from "vue";
+import {reactive, ref} from "vue";
 
 export const allPokemon = reactive([]);
 export const allPokemonData = reactive([]);
+export let showLoading = ref(true);
 let offset = 0;
 let limit = 1024;
 
@@ -22,6 +23,7 @@ export async function addAdditionalData() {
     return {...pokemon, additionalData};
   }));
   allPokemonData.push(allPokemonWithAdditionalData);
+  showLoading.value = false;
 }
 
 async function getPokemonData(url) {
